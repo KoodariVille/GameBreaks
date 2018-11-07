@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gameiterations;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author User
- */
 public class Iteration {
     private int round;
     private String homeA;
@@ -38,16 +29,36 @@ public class Iteration {
     public void SetHomeB(String x){
         homeB = x;
     }
-//    public int BreakCheckA(List<Iteration> games){
-//        Iteration g = games.get(0);
-//        for(int i = 1; i < games.size(); i++){
-//            if(g.homeA == true && games.get(i).homeA == true){
-//                hBreaks += 1;
-//            }
-//            g = games.get(i);           
-//        }
-//        return hBreaks;
-//    }
+
+    public void CheckRound(Iteration round, List<Iteration> games){
+        String checkA = games.get(0).homeA;
+        String checkB = games.get(0).homeB;
+        hBreaks = 0;
+        vBreaks = 0;      
+        
+        for(int i = 1; i < round.round; i++){
+            if(games.get(i).homeA != null){
+                if(checkA.equals("home") && games.get(i).homeA.equals("home")){
+                hBreaks += 1;
+                //System.out.println(games.get(i).round);
+                }
+                checkA = games.get(i).homeA;
+            }  
+        }
+
+        for(int i = 1; i < round.round; i++){
+            if(games.get(i).homeB != null){
+                if(checkB.equals("home") && games.get(i).homeB.equals("home")){
+                vBreaks += 1;
+                //System.out.println(games.get(i).round);
+                }
+                checkB = games.get(i).homeB;
+            }            
+        }
+        
+        System.out.println((round.round) + " kierroksella on kertynyt breikkejä kotijoukkueelle: " + 
+                hBreaks + " ja vierasjoukkueelle: " + vBreaks);
+    }
     
     public int BreakCheckA(List<Iteration> games){
         String check = games.get(0).homeA;

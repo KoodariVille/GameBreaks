@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gameiterations;
 
 /**
  *
- * @author User
+ * @author Ville Niemi
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         Iteration a = new Iteration();
         
         a.games.add(new Iteration(1,"home","visitor"));
@@ -34,6 +25,8 @@ public class Main {
         
         a.games.get(6).SetHomeA("home");
         a.games.get(6).SetHomeB("visitor");
+        
+        a.CheckRound(a.games.get(4), a.games);
         
         System.out.println("Koti breakit: " + a.BreakCheckA(a.games));
         System.out.println("Vieras breakit: " + a.BreakCheckB(a.games));
